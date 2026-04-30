@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop — FLUX KICKS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="WhatsApp Image 2026-04-29 at 12.23.43-Photoroom.png" alt="FLUX KICKS" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Басты бет</a></li>
+                <li><a href="index.html#store" class="nav-link">Біздің мекен-жайымыз</a></li>
+                <li><button class="nav-link nav-link--signup" onclick="openModal()">Тіркелу</button></li>
+                <li><a href="shop.html" class="nav-link nav-link--cta active-page">Дүкен</a></li>
+                <li>
+                    <button class="cart-btn" onclick="openCart()" aria-label="Cart">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="burger-wrap">
+                <button class="cart-btn cart-btn--mob" onclick="openCart()" aria-label="Cart">
+                    🛒
+                    <span class="cart-count" id="cartCountMob">0</span>
+                </button>
+                <button class="burger" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" onclick="closeMenu()">Басты бет</a></li>
+            <li><a href="index.html#store" onclick="closeMenu()">Біздің мекен-жайымыз</a></li>
+            <li><a href="#" onclick="closeMenu(); openModal()">Тіркелу</a></li>
+            <li><a href="shop.html" onclick="closeMenu()">Дүкен</a></li>
+        </ul>
+    </div>
+
+    <!-- SHOP HERO -->
+    <div class="shop-hero">
+        <div class="container">
+            <div class="section-tag">Full Collection</div>
+            <h1 class="section-title shop-page-title">ALL KICKS</h1>
+            <p class="shop-hero-desc">Бүкіл ассортимент - классикадан соңғы тамшыларға дейін.</p>
+        </div>
+    </div>
+
+    <!-- SHOP FILTERS -->
+    <div class="shop-filters-bar">
+        <div class="container">
+            <div class="shop-filters-inner">
+                <div class="shop-filters-left">
+                    <button class="filter-btn active" onclick="shopFilter('all', this)">Бары</button>
+                    <button class="filter-btn" onclick="shopFilter('sneakers', this)">Кроссовкалар</button>
+                    <button class="filter-btn" onclick="shopFilter('boots', this)">Колаба</button>
+                    <button class="filter-btn" onclick="shopFilter('sport', this)">Спорт</button>
+                    <button class="filter-btn" onclick="shopFilter('casual', this)">Кездейсоқ</button>
+                </div>
+                <div class="shop-results-count" id="shopCount">18 тауарлар</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOP GRID -->
+    <section class="section shop-section">
+        <div class="container">
+            <div class="products-grid shop-grid" id="shopGrid">
+
+            </div>
+
+            <!-- PAGINATION -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn" id="prevBtn" onclick="changePage(-1)" disabled>← Назад</button>
+                <div class="page-dots" id="pageDots"></div>
+                <button class="page-btn" id="nextBtn" onclick="changePage(1)">Вперёд →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SIGNUP MODAL ══ -->
+    <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+        <div class="modal" id="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-tabs">
+                <button class="modal-tab active" id="tabSignup" onclick="switchTab('signup')">Тіркелу</button>
+                <button class="modal-tab" id="tabLogin" onclick="switchTab('login')">Жүйеге кіріңіз</button>
+            </div>
+            <div class="modal-form" id="formSignup">
+                <div class="modal-logo">FLUX<span>KICKS</span></div>
+                <p class="modal-subtitle">Тіркелгіні жасаңыз және жаңа тамшылар туралы бірінші болып хабардар болыңыз</p>
+                <div class="form-group">
+                    <label class="form-label">Аты</label>
+                    <input type="text" class="form-input" id="signupName" placeholder="Сіздің атыңыз">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email немесе телефон нөмір</label>
+                    <input type="text" class="form-input" id="signupContact" placeholder="email@mail.com немесе +7 700...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Пароль</label>
+                    <div class="input-wrap">
+                        <input type="password" class="form-input" id="signupPassword" placeholder="Кемінде 6 таңба">
+                        <button class="toggle-pass" onclick="togglePass('signupPassword', this)">👁</button>
+                    </div>
+                </div>
+                <div class="form-error" id="signupError"></div>
+                <button class="btn btn--primary btn--full" onclick="handleSignup()">Аккаунты құру</button>
+                <p class="modal-switch">Аккаунт барма? <span onclick="switchTab('login')">Жүйеге кіру</span></p>
+            </div>
+            <div class="modal-form hidden" id="formLogin">
+                <div class="modal-logo">FLUX<span>KICKS</span></div>
+                <p class="modal-subtitle">Қайтадан қош келдіңіз</p>
+                <div class="form-group">
+                    <label class="form-label">Email немесе номер телефона</label>
+                    <input type="text" class="form-input" id="loginContact" placeholder="email@mail.com немесе +7 700...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Пароль</label>
+                    <div class="input-wrap">
+                        <input type="password" class="form-input" id="loginPassword" placeholder="Құпия сөзіңіз">
+                        <button class="toggle-pass" onclick="togglePass('loginPassword', this)">👁</button>
+                    </div>
+                </div>
+                <div class="form-error" id="loginError"></div>
+                <button class="btn btn--primary btn--full" onclick="handleLogin()">Жүйеге кіру</button>
+                <p class="modal-switch">Аккаунт жокпа? <span onclick="switchTab('signup')">Тіркелу</span></p>
+            </div>
+            <div class="modal-form hidden" id="formSuccess">
+                <div class="success-icon">✓</div>
+                <h3 class="success-title">Дайын!</h3>
+                <p class="success-desc" id="successMsg">Тіркелгі жасалды. FLUX KICKS сайтына қош келдіңіз.!</p>
+                <button class="btn btn--primary btn--full" onclick="closeModal()">Жабу</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay" onclick="handleCartOverlayClick(event)">
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h3 class="cart-title"> Корзина</h3>
+                <button class="cart-close" onclick="closeCart()">✕</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty" id="cartEmpty">
+                    <span class="cart-empty-icon">👟</span>
+                    <p>Корзина пуста</p>
+                    <p class="cart-empty-sub">Добавь кроссовки!</p>
+                </div>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display:none">
+                <div class="cart-total-row">
+                    <span>Итого:</span>
+                    <span class="cart-total" id="cartTotal">$0</span>
+                </div>
+                <button class="btn btn--primary btn--full" onclick="checkout()">Оформить заказ</button>
+                <button class="btn btn--outline btn--full" onclick="clearCart()" style="margin-top:10px">Очистить корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand sr sr-d1">
+                    <img src="WhatsApp Image 2026-04-29 at 12.23.43-Photoroom.png" alt="FLUX KICKS" class="logo-img logo-img--sm">
+                    <p class="footer-brand-desc">Мақсатпен қозғалатындарға арналған премиум аяқ киім. Әрбір жұп бір оқиғаны айтып береді — сіздің тарихыңызды ұмытылмас етіңіз.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/" class="social-btn" target="_blank">Instagram</a>
+                        <a href="https://t.me/m1tssmore" class="social-btn" target="_blank">Telegram</a>
+                        <a href="https://www.tiktok.com/explore" class="social-btn" target="_blank">TikTok</a>
+                    </div>
+                </div>
+                <div class="footer-col sr sr-d2">
+                    <div class="footer-col-title">Навигация</div>
+                    <ul class="footer-col-links">
+                        <li><a href="#home">Басты бет</a></li>
+                        <li><a href="shop.html">Дүкен</a></li>
+                        <li><a href="#store">Бізге келіңіз</a></li>
+                        <li><a href="#store">Біздің дүкен</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col sr sr-d3">
+                    <div class="footer-col-title">Санаттар</div>
+                    <ul class="footer-col-links">
+                        <li><a href="#">Кроссовкалар</a></li>
+                        <li><a href="#">Колаба</a></li>
+                        <li><a href="#">Кездейсоқ</a></li>
+                        <li><a href="#">Спорт</a></li>
+                        <li><a href="#">Жаңадан келгендер</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col sr sr-d4">
+                    <div class="footer-col-title">Байланыс</div>
+                    <ul class="footer-col-links footer-col-links--info">
+                        <li> г. Алматы, ул. Жандосова 65, 308А каб.</li>
+                        <li> +7 (700) 968-61-51</li>
+                        <li> info@fluxkicks.kz</li>
+                        <li> Пн–Вс: 10:00 – 21:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2026 FLUX KICKS. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Returns</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
