@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUX KICKS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="https://2gis.kz/almaty/geo/9429940000792238/76.866235,43.211988" class="nav-logo" target="_blank">
+                <img src="WhatsApp Image 2026-04-29 at 12.23.43-Photoroom.png" alt="FLUX KICKS" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Басты бет</a></li>
+                <li><a href="#store" class="nav-link">Біздің мекен-жайымыз</a></li>
+                <li><button class="nav-link nav-link--signup" onclick="openModal()">Тіркелу</button></li>
+                <li><a href="shop.html" class="nav-link nav-link--cta">Дүкен</a></li>
+                <li>
+                    <button class="cart-btn" onclick="openCart()" aria-label="Cart">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="burger-wrap">
+                <button class="cart-btn cart-btn--mob" onclick="openCart()" aria-label="Cart">
+                    🛒
+                    <span class="cart-count" id="cartCountMob">0</span>
+                </button>
+                <button class="burger" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" onclick="closeMenu()">Басты бет</a></li>
+            <li><a href="#store" onclick="closeMenu()">Біздің мекен-жайымыз</a></li>
+            <li><a href="#" onclick="closeMenu(); openModal()">Тіркелу</a></li>
+            <li><a href="shop.html" onclick="closeMenu()">Дүкен</a></li>
+        </ul>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-tag">Жаңа тамшы 2026</div>
+                <h1 class="hero-title">
+                    MOVE IN<br>
+                    <span class="hero-title--accent">FLUX</span>
+                </h1>
+                <p class="hero-desc">
+                    Қарқынды орнатқандар үшін премиум соққылар. Әрбір қадам, әрбір стиль — айырмашылықты аяқтарыңыздың астында сезініңіз.
+                </p>
+                <div class="hero-btns">
+                    <a href="#new-arrivals" class="btn btn--primary">Жаңадан келгендер</a>
+                    <a href="#store" class="btn btn--outline">Біздің дүкен</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-num">500+</span>
+                        <span class="stat-label">Модель</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">12K+</span>
+                        <span class="stat-label">Тұтынушылар</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">8+</span>
+                        <span class="stat-label">Жыл</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-glow"></div>
+                <div class="hero-photo">
+                    <div class="photo-placeholder">
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.51.48.jpeg" alt="">
+                    </div>
+                    <div class="hero-badge">
+                        <span class="badge-label">New Season</span>
+                        <span class="badge-price">от $89</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MARQUEE ══ -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>FLUX KICKS</span><span>·</span>
+            <span>NEW ARRIVALS</span><span>·</span>
+            <span>FREE SHIPPING</span><span>·</span>
+            <span>PREMIUM QUALITY</span><span>·</span>
+            <span>FLUX KICKS</span><span>·</span>
+            <span>NEW ARRIVALS</span><span>·</span>
+            <span>FREE SHIPPING</span><span>·</span>
+            <span>PREMIUM QUALITY</span><span>·</span>
+            <span>FLUX KICKS</span><span>·</span>
+            <span>NEW ARRIVALS</span><span>·</span>
+            <span>FREE SHIPPING</span><span>·</span>
+            <span>PREMIUM QUALITY</span><span>·</span>
+        </div>
+    </div>
+
+    <!-- ══ NEW ARRIVALS NAV ══ -->
+    <div class="arrivals-nav" id="new-arrivals">
+        <div class="container">
+            <div class="arrivals-nav-inner">
+                <div class="arrivals-nav-left sr sr-left">
+                    <div class="section-tag">Just Landed</div>
+                    <h2 class="section-title">NEW ARRIVALS</h2>
+                </div>
+                <div class="arrivals-nav-filters sr sr-d2">
+                    <button class="filter-btn active" onclick="filterArrivals('all', this)">Бары</button>
+                    <button class="filter-btn" onclick="filterArrivals('sneakers', this)">Кроссовкалар</button>
+                    <button class="filter-btn" onclick="filterArrivals('boots', this)">Колаба</button>
+                    <button class="filter-btn" onclick="filterArrivals('sport', this)">Спорт</button>
+                    <button class="filter-btn" onclick="filterArrivals('casual', this)">Кездейсоқ</button>
+                </div>
+                <a href="shop.html" class="btn btn--outline btn--sm sr sr-right">Барлығын көру →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ NEW ARRIVALS GRID ══ -->
+    <section class="section arrivals-section" id="shop">
+        <div class="container">
+            <div class="products-grid arrivals-grid" id="arrivalsGrid">
+
+                <div class="product-card sr sr-d1" data-cat="sneakers">
+                    <div class="card-img other">
+                        <span class="card-badge">ЖАҢА</span>
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.43.55.jpeg" alt="Asics blue 2026" class="card-photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-brand">Asics</div>
+                        <div class="card-name">Asics blue 2026</div>
+                        <div class="card-row">
+                            <div class="card-price">$189</div>
+                            <button class="card-btn" onclick="addToCart('Asics blue 2026', 189, this)">Себетке қосу</button>
+                        </div>
+                        <div class="card-sizes">Өлшемдері: 38 – 46</div>
+                    </div>
+                </div>
+
+                <div class="product-card sr sr-d2" data-cat="casual">
+                    <div class="card-img">
+                        <span class="card-badge">ЖАҢА</span>
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.43.54 (1)-Photoroom.png" alt="Asics Ultra Boost X" class="card-photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-brand">Asics</div>
+                        <div class="card-name">Asics Ultra Boost X</div>
+                        <div class="card-row">
+                            <div class="card-price">$159</div>
+                            <button class="card-btn" onclick="addToCart('Asics Ultra Boost X', 159, this)">Себетке қосу</button>
+                        </div>
+                        <div class="card-sizes">Өлшемдері: 36 – 44</div>
+                    </div>
+                </div>
+
+                <div class="product-card sr sr-d3" data-cat="boots">
+                    <div class="card-img">
+                        <span class="card-badge card-badge--sale">САТУ</span>
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.43.55 (1).jpeg" alt="Asics Premium Boot" class="card-photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-brand">Asics</div>
+                        <div class="card-name">Asics Premium Boot</div>
+                        <div class="card-row">
+                            <div class="card-price">$149</div>
+                            <button class="card-btn" onclick="addToCart('Asics Premium Boot', 149, this)">Себетке қосу</button>
+                        </div>
+                        <div class="card-sizes">Өлшемдері: 39 – 46</div>
+                    </div>
+                </div>
+
+                <div class="product-card sr sr-d4" data-cat="sneakers">
+                    <div class="card-img">
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.43.55 (2).jpeg" alt="Asics Classic" class="card-photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-brand">Asics</div>
+                        <div class="card-name">Asics Classic</div>
+                        <div class="card-row">
+                            <div class="card-price">$175</div>
+                            <button class="card-btn" onclick="addToCart('Asics Classic', 175, this)">Себетке қосу</button>
+                        </div>
+                        <div class="card-sizes">Өлшемдері: 38 – 47</div>
+                    </div>
+                </div>
+
+                <div class="product-card sr sr-d5" data-cat="sport">
+                    <div class="card-img">
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.43.55 (3).jpeg" alt="Asics Retro" class="card-photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-brand">Asics</div>
+                        <div class="card-name">Asics Retro</div>
+                        <div class="card-row">
+                            <div class="card-price">$210</div>
+                            <button class="card-btn" onclick="addToCart('Asics Retro', 210, this)">Себетке қосу</button>
+                        </div>
+                        <div class="card-sizes">Өлшемдері: 38 – 46</div>
+                    </div>
+                </div>
+
+                <div class="product-card sr sr-d6" data-cat="casual">
+                    <div class="card-img">
+                        <span class="card-badge card-badge--sale">САТУ</span>
+                        <img src="img/WhatsApp Image 2026-04-29 at 10.43.56.jpeg" alt="Asics Classic XXI" class="card-photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-brand">Asics</div>
+                        <div class="card-name">Asics Classic XXI</div>
+                        <div class="card-row">
+                            <div class="card-price">$99</div>
+                            <button class="card-btn" onclick="addToCart('Asics Classic XXI', 99, this)">Себетке қосу</button>
+                        </div>
+                        <div class="card-sizes">Өлшемдері: 37 – 45</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ STORE ══ -->
+    <section class="store-section" id="store">
+        <div class="container">
+            <div class="store-inner">
+                <div class="store-text sr sr-left">
+                    <div class="section-tag">Бізге келіңіз</div>
+                    <h2 class="section-title">OUR<br>STORE</h2>
+                    <p class="store-desc">
+                        Кіріңіз және аяқ киімді өзіңіз көріңіз. Біздің дүкен нағыз кроссовкаларды жақсы көретіндерге арналған орын. 500-ден астам стильдер, кеңес беру және фитингтер кіреді.
+                    </p>
+                    <div class="store-features">
+                        <div class="feature sr sr-d1"><div class="feature-dot"></div>Жеке консультация</div>
+                        <div class="feature sr sr-d2"><div class="feature-dot"></div>Сатып алмас бұрын көріңіз</div>
+                        <div class="feature sr sr-d3"><div class="feature-dot"></div>Эксклюзивті тамшылар тек дүкенде</div>
+                        <div class="feature sr sr-d4"><div class="feature-dot"></div>Тегін аяқ киім күтімі</div>
+                    </div>
+                    <a href="https://2gis.kz/almaty/geo/9429940000792238/76.866235,43.211988" class="btn btn--primary sr sr-d2" target="_blank">Бізді қалай табуға болады</a>
+                </div>
+                <div class="store-photo sr sr-right">
+                    <div class="photo-placeholder">
+                        <img src="WhatsApp Image 2026-04-29 at 12.26.43.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SIGNUP MODAL ══ -->
+    <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+        <div class="modal" id="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-tabs">
+                <button class="modal-tab active" id="tabSignup" onclick="switchTab('signup')">Тіркелу</button>
+                <button class="modal-tab" id="tabLogin" onclick="switchTab('login')">Жүйеге кіріңіз</button>
+            </div>
+            <div class="modal-form" id="formSignup">
+                <div class="modal-logo">FLUX<span>KICKS</span></div>
+                <p class="modal-subtitle">Тіркелгіні жасаңыз және жаңа тамшылар туралы бірінші болып хабардар болыңыз</p>
+                <div class="form-group">
+                    <label class="form-label">Аты</label>
+                    <input type="text" class="form-input" id="signupName" placeholder="Сіздің атыңыз">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email немесе телефон нөмір</label>
+                    <input type="text" class="form-input" id="signupContact" placeholder="email@mail.com немесе +7 700...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Пароль</label>
+                    <div class="input-wrap">
+                        <input type="password" class="form-input" id="signupPassword" placeholder="Кемінде 6 таңба">
+                        <button class="toggle-pass" onclick="togglePass('signupPassword', this)">👁</button>
+                    </div>
+                </div>
+                <div class="form-error" id="signupError"></div>
+                <button class="btn btn--primary btn--full" onclick="handleSignup()">Аккаунты құру</button>
+                <p class="modal-switch">Аккаунт барма? <span onclick="switchTab('login')">Жүйеге кіру</span></p>
+            </div>
+            <div class="modal-form hidden" id="formLogin">
+                <div class="modal-logo">FLUX<span>KICKS</span></div>
+                <p class="modal-subtitle">Қайтадан қош келдіңіз</p>
+                <div class="form-group">
+                    <label class="form-label">Email немесе номер телефона</label>
+                    <input type="text" class="form-input" id="loginContact" placeholder="email@mail.com немесе +7 700...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Пароль</label>
+                    <div class="input-wrap">
+                        <input type="password" class="form-input" id="loginPassword" placeholder="Құпия сөзіңіз">
+                        <button class="toggle-pass" onclick="togglePass('loginPassword', this)">👁</button>
+                    </div>
+                </div>
+                <div class="form-error" id="loginError"></div>
+                <button class="btn btn--primary btn--full" onclick="handleLogin()">Жүйеге кіру</button>
+                <p class="modal-switch">Аккаунт жокпа? <span onclick="switchTab('signup')">Тіркелу</span></p>
+            </div>
+            <div class="modal-form hidden" id="formSuccess">
+                <div class="success-icon">✓</div>
+                <h3 class="success-title">Дайын!</h3>
+                <p class="success-desc" id="successMsg">Тіркелгі жасалды. FLUX KICKS сайтына қош келдіңіз.!</p>
+                <button class="btn btn--primary btn--full" onclick="closeModal()">Жабу</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ CART DRAWER ══ -->
+    <div class="cart-overlay" id="cartOverlay" onclick="handleCartOverlayClick(event)">
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h3 class="cart-title">Себет</h3>
+                <button class="cart-close" onclick="closeCart()">✕</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty" id="cartEmpty">
+                    <span class="cart-empty-icon">👟</span>
+                    <p>Себет бос</p>
+                    <p class="cart-empty-sub">Кроссовкаларды қосыңыз!</p>
+                </div>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display:none">
+                <div class="cart-total-row">
+                    <span>Барлығы:</span>
+                    <span class="cart-total" id="cartTotal">$0</span>
+                </div>
+                <button class="btn btn--primary btn--full" onclick="checkout()">Тапсырыс беріңіз</button>
+                <button class="btn btn--outline btn--full" onclick="clearCart()" style="margin-top:10px">Қоқысты босату</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand sr sr-d1">
+                    <img src="WhatsApp Image 2026-04-29 at 12.23.43-Photoroom.png" alt="FLUX KICKS" class="logo-img logo-img--sm">
+                    <p class="footer-brand-desc">Мақсатпен қозғалатындарға арналған премиум аяқ киім. Әрбір жұп бір оқиғаны айтып береді — сіздің тарихыңызды ұмытылмас етіңіз.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/" class="social-btn" target="_blank">Instagram</a>
+                        <a href="https://t.me/m1tssmore" class="social-btn" target="_blank">Telegram</a>
+                        <a href="https://www.tiktok.com/explore" class="social-btn" target="_blank">TikTok</a>
+                    </div>
+                </div>
+                <div class="footer-col sr sr-d2">
+                    <div class="footer-col-title">Навигация</div>
+                    <ul class="footer-col-links">
+                        <li><a href="#home">Басты бет</a></li>
+                        <li><a href="shop.html">Дүкен</a></li>
+                        <li><a href="#store">Бізге келіңіз</a></li>
+                        <li><a href="#store">Біздің дүкен</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col sr sr-d3">
+                    <div class="footer-col-title">Санаттар</div>
+                    <ul class="footer-col-links">
+                        <li><a href="#">Кроссовкалар</a></li>
+                        <li><a href="#">Колаба</a></li>
+                        <li><a href="#">Кездейсоқ</a></li>
+                        <li><a href="#">Спорт</a></li>
+                        <li><a href="#">Жаңадан келгендер</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col sr sr-d4">
+                    <div class="footer-col-title">Байланыс</div>
+                    <ul class="footer-col-links footer-col-links--info">
+                        <li> г. Алматы, ул. Жандосова 65, 308А каб.</li>
+                        <li> +7 (700) 968-61-51</li>
+                        <li> info@fluxkicks.kz</li>
+                        <li> Пн–Вс: 10:00 – 21:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2026 FLUX KICKS. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Returns</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
